@@ -1,13 +1,12 @@
 import express from "express";
+import { usuarioRouter } from "./routes/usuarioRouter";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.status(201).json({ message: 'Hello World...' });
-});
+app.use('/usuario', usuarioRouter);
 
 app.listen(port, () => {
     console.log(`App run on port ${port}`);
