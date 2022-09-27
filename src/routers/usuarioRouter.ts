@@ -4,7 +4,6 @@ import { UsuarioRepository } from '../repository/UsuarioRepository';
 
 export const usuarioRouter = Router();
 
-const usuario = [];
 const novoUsuario = new UsuarioRepository();
 
 usuarioRouter.post('/', (req, res) => {
@@ -16,5 +15,25 @@ usuarioRouter.post('/', (req, res) => {
 });
 
 usuarioRouter.get('/', (req, res) => {
-    return res.json(novoUsuario)
+    const listarTodosUsuarios = novoUsuario.listar();
+    
+    const listaVazia = novoUsuario.listaVazia();
+
+    if (listaVazia) {
+        return res.status(201).json({ message: 'Lista vazia' });
+    }
+
+    return res.status(201).json(listarTodosUsuarios);
 });
+
+usuarioRouter.get('/:id', (req, res) => {
+    const { id } = req.params;
+
+    const listarUsuarioId = novoUsuario.listarUsuarioId(id);
+
+    if (listarUsuarioId === undefined) {
+        return res.status(401).json({ message: 'Usuário não encontrado.' });
+    }
+
+    return res.status(201).json(listarUsuarioId);
+})

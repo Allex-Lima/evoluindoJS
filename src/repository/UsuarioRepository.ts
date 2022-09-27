@@ -23,5 +23,17 @@ export class UsuarioRepository {
         this.usuarios.push(novoUsuario);
     }
 
-    
+    listar(): Usuario[] {
+        return this.usuarios;
+    }
+
+    listaVazia() {
+        return this.usuarios.length === 0;
+    }
+
+    listarUsuarioId(id: string): Usuario | undefined {
+        const idUsuario = this.usuarios.find((usuarioId) => usuarioId.id === id);
+            
+        return idUsuario;
+    }
 }
