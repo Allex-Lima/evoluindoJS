@@ -26,10 +26,10 @@ usuarioRouter.get('/', (req, res) => {
     return res.status(201).json(listarTodosUsuarios);
 });
 
-usuarioRouter.get('/:id', (req, res) => {
-    const { id } = req.params;
+usuarioRouter.get('/:nome', (req, res) => {
+    const { nome } = req.params;
 
-    const listarUsuarioId = novoUsuario.listarUsuarioId(id);
+    const listarUsuarioId = novoUsuario.listarUsuarioId(nome);
 
     if (listarUsuarioId === undefined) {
         return res.status(401).json({ message: 'Usuário não encontrado.' });

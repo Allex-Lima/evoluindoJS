@@ -31,8 +31,8 @@ export class UsuarioRepository {
         return this.usuarios.length === 0;
     }
 
-    listarUsuarioId(id: string): Usuario | undefined {
-        const idUsuario = this.usuarios.find((usuarioId) => usuarioId.id === id);
+    listarUsuarioId(nome: string): Usuario | undefined {
+        const idUsuario = this.usuarios.find((usuarioId) => usuarioId.nome === nome);
             
         return idUsuario;
     }
