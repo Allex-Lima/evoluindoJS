@@ -1,4 +1,4 @@
-import { UsuarioRepository } from "../repository/UsuarioRepository";
+import { IUsuariosRepository } from "../repository/IUsuariosRepository";
 
 interface IRequest {
     nome: string;
@@ -7,7 +7,7 @@ interface IRequest {
 
 export class CreateUsuarioServices {
 
-    constructor(private usuarioRepository: UsuarioRepository) { }
+    constructor(private usuarioRepository: IUsuariosRepository) { }
     
     execute({email, nome}: IRequest): void {
         const heUsuario = this.usuarioRepository.listarUsuarioId(nome);

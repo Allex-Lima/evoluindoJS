@@ -1,11 +1,7 @@
 import { Usuario } from '../model/Usuario';
+import { IUsuariosRepository, ICriaUsuarioDTO } from './IUsuariosRepository';
 
-interface ICriaUsuarioDTO {
-    nome: string,
-    email: string
-}
-
-export class UsuarioRepository {
+export class UsuarioRepository implements IUsuariosRepository{
     private usuarios: Usuario[];
 
     constructor() {
